@@ -20,28 +20,30 @@ return {
             pokemonList.push(pokemon); 
         };
     },
-// // Attempts to use filter() to search pokemon by name
-//     filtered: function(pokemonName) {
-//         let result = pokemonList.filter(function checkName(value) {
-//     if (value.name == pokemonName) {
-//         return value;
-//     }
-// };)
-//     }
+
+    addListItem: function(pokemon){
+        let unorderedList = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('button');
+        button.addEventListener('click', function() {
+            pokemonRepository.showDetails(pokemon)
+        })
+        listItem.appendChild(button);
+        unorderedList.appendChild(listItem);
+    },
+
+    showDetails: function(pokemon) {
+        console.log(pokemon);
+    }
+
 };
 })();
 
 
-
-pokemonRepository.add({name: "Pikachu", height: 30, type: ['electric']});
-document.write(filtered(torchic));
-
+//Prints pokemon list 
 pokemonRepository.getAll().forEach(function(pokemon) {
-    document.write(pokemon.name, " (height: ", pokemon.height, ") ")
-    if (pokemon.height > 100) {
-// Print "Wow, that's big" after pokemon with height over 100
-        document.write(" - Wow, that's big! ")
-    };
+  pokemonRepository.addListItem(pokemon);
 });
-
 

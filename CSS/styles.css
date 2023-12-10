@@ -1,0 +1,13 @@
+.pokemon-list {
+    list-style-type: none;
+}
+
+.button {
+    width: 250px;
+    height: 75px;
+    border: 1px solid grey;
+}
+
+.button:hover {
+    background-color: aliceblue;
+}
