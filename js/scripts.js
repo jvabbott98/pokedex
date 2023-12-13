@@ -26,18 +26,56 @@ return {
         let button = document.createElement('button');
         button.innerText = pokemon.name;
         button.classList.add('button');
-        button.addEventListener('click', function() {
-            pokemonRepository.showDetails(pokemon)
-        })
+        button.addEventListener('click', () => {
+            pokemonRepository.showDetails(pokemon);
+        });
         listItem.appendChild(button);
         unorderedList.appendChild(listItem);
     },
 
     showDetails: function(pokemon) {
+
         pokemonRepository.loadDetails(pokemon).then(function() {
-            console.log(pokemon);
+            let modalContainer = document.querySelector('#modal-container');
+            let dialogPromiseReject;
+
+            //Clear modal-container and add modal element within
+            modalContainer = '';                            
+            let modal = document.createElement('div');
+            modal.classList.add('modal');
+
+            //Create content to be added to the Modal -> Pokemon name, height, and image as well as close button
+            let pokemonName = document.createElement('h1');
+            pokemonName.innerText = pokemon.name;
+            let pokemonHeight = document.createElement('p');
+            pokemonHeight.innerText = pokemon.height;
+            let pokemonImage = document.createElement('img')
+            pokemonImage.src = pokemon.imageUrl;
+            let closeButtonElement = document.createElement('button');  //Add button with text "close" that when clicked will hide modal
+            closeButtonElement.classList.add('modal-close');
+            closeButtonElement.innerText = 'Close';
+            closeButtonElement.addEventListener('click', pokemonRepository.hideDetails); 
+
+            //Add created content to modal through appendChild() and add modal to modal-container
+            modal.appendChild(pokemonName);
+            modal.appendChild(pokemonHeight);
+            modal.appendChild(pokemonImage);
+            modal.appendChild(closeButtonElement);
+            modalContainer.appendChild(modal); 
+
+            //Make modal-container and contents within visible
+            modalContainer.classList.add('is-visible');
         });
     },
+
+    hideDetails: function() {
+        modalContainer.classList.remove('is-visible');
+        
+        if (dialogPromiseReject) {
+          dialogPromiseReject();
+          dialogPromiseRejct = null;
+        }
+      },
 
     loadList: function() {
         return fetch(apiUrl).then(function (response) {
