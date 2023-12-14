@@ -1,6 +1,7 @@
 let pokemonRepository = (function () {
 let pokemonList = [];
 let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+let modalContainer = document.querySelector('#modal-container');
 
 //returns all objects in the pokemonList array.
 return {
@@ -36,11 +37,10 @@ return {
     showDetails: function(pokemon) {
 
         pokemonRepository.loadDetails(pokemon).then(function() {
-            let modalContainer = document.querySelector('#modal-container');
             let dialogPromiseReject;
 
             //Clear modal-container and add modal element within
-            modalContainer = '';                            
+            modalContainer.innerText = '';                            
             let modal = document.createElement('div');
             modal.classList.add('modal');
 
@@ -48,7 +48,7 @@ return {
             let pokemonName = document.createElement('h1');
             pokemonName.innerText = pokemon.name;
             let pokemonHeight = document.createElement('p');
-            pokemonHeight.innerText = pokemon.height;
+            pokemonHeight.innerText = `Height: ${pokemon.height}`;
             let pokemonImage = document.createElement('img')
             pokemonImage.src = pokemon.imageUrl;
             let closeButtonElement = document.createElement('button');  //Add button with text "close" that when clicked will hide modal
@@ -65,16 +65,26 @@ return {
 
             //Make modal-container and contents within visible
             modalContainer.classList.add('is-visible');
+
+            //Remove modal by clicking outside of modal
+            modalContainer.addEventListener('click', (e) => {
+                let target = e.target;
+                if (target === modalContainer) {
+                  pokemonRepository.hideDetails();
+                }
+              });
+              
+              //Remove modal by hitting the escape key
+              window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+                  pokemonRepository.hideDetails();  
+                }
+              });
         });
     },
 
     hideDetails: function() {
         modalContainer.classList.remove('is-visible');
-        
-        if (dialogPromiseReject) {
-          dialogPromiseReject();
-          dialogPromiseRejct = null;
-        }
       },
 
     loadList: function() {
@@ -106,6 +116,14 @@ return {
           console.error(e);
         });
       }
+      
+
+
+
+
+
+
+
 
 };
 })();
