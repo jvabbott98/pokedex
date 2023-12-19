@@ -27,7 +27,6 @@ return {
         //add boostrap classes
         listItem.classList.add('list-group-item');
         listItem.classList.add('col');
-        listItem.classList.add('col-md-4');
 
         let button = document.createElement('button');
         button.innerText = pokemon.name;
@@ -44,13 +43,17 @@ return {
     },
 
     showDetails: function(pokemon) {
+        let modalTitle = document.querySelector('.modal-title');
+        let modalBody = document.querySelector('.modal-body');
 
         pokemonRepository.loadDetails(pokemon).then(function() {
 
             //Clear modal-container and add modal element within
-            modalContainer.innerText = 　'';                            
-            let modal = document.createElement('div');
-            modal.classList.add('modal');
+            modalTitle.innerText = '';                  
+            modalBody.innerTest = '';
+            
+            // let modal = document.createElement('div');
+            // modal.classList.add('modal');
 
             //Create content to be added to the Modal -> Pokemon name, height, and image as well as close button
             let pokemonName = document.createElement('h1');
@@ -59,46 +62,46 @@ return {
             pokemonHeight.innerText = `Height: ${pokemon.height}`;
             let pokemonImage = document.createElement('img')
             pokemonImage.src = pokemon.imageUrl;
-            let closeButtonElement = document.createElement('button');  //Add button with text "close" that when clicked will hide modal
-            closeButtonElement.classList.add('modal-close');
-            closeButtonElement.innerText = 'Close';
-            closeButtonElement.addEventListener('click', pokemonRepository.hideDetails); 
+            // let closeButtonElement = document.createElement('button');  //Add button with text "close" that when clicked will hide modal
+            // closeButtonElement.classList.add('modal-close');
+            // closeButtonElement.innerText = 'Close';
+            // closeButtonElement.addEventListener('click', pokemonRepository.hideDetails); 
 
             //Add created content to modal through appendChild() and add modal to modal-container
-            modal.appendChild(pokemonName);
-            modal.appendChild(pokemonHeight);
-            modal.appendChild(pokemonImage);
-            modal.appendChild(closeButtonElement);
-            modalContainer.appendChild(modal); 
+            modalTitle.appendChild(pokemonName);
+            modalBody.appendChild(pokemonHeight);
+            modalBody.appendChild(pokemonImage);
+            // modal.appendChild(closeButtonElement);
+            // modalContainer.appendChild(modal); 
 
-            //Make modal-container and contents within visible
-            modalContainer.classList.add('is-visible');
+            // //Make modal-container and contents within visible
+            // modalContainer.classList.add('is-visible');
 
-            //Remove modal by clicking outside of modal
-            modalContainer.addEventListener('click', (e) => {
-              let target = e.target;
-              if (target === modalContainer) {
-                pokemonRepository.hideDetails();
-              }
-            });
+            // //Remove modal by clicking outside of modal
+            // modalContainer.addEventListener('click', (e) => {
+            //   let target = e.target;
+            //   if (target === modalContainer) {
+            //     pokemonRepository.hideDetails();
+            //   }
+            // });
 
-            //Remove modal by hitting the escape key
-            window.addEventListener('keydown', (e) => {
-              if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-                pokemonRepository.hideDetails();  
-              }
-            });
+            // //Remove modal by hitting the escape key
+            // window.addEventListener('keydown', (e) => {
+            //   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+            //     pokemonRepository.hideDetails();  
+            //   }
+            // });
         });
     },
 
-    hideDetails: function() {
-        modalContainer.classList.remove('is-visible');
+    // hideDetails: function() {
+    //     modalContainer.classList.remove('is-visible');
         
-        if (dialogPromiseReject) {
-          dialogPromiseReject();
-          dialogPromiseRejct = null;
-        }
-      },
+    //     if (dialogPromiseReject) {
+    //       dialogPromiseReject();
+    //       dialogPromiseRejct = null;
+    //     }
+    //   },
 
     loadList: function() {
         return fetch(apiUrl).then(function (response) {
