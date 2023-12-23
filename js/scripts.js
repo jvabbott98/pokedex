@@ -50,7 +50,7 @@ return {
 
             //Clear modal-container and add modal element within
             modalTitle.innerText = '';                  
-            modalBody.innerTest = '';
+            modalBody.innerText = '';
             
             // let modal = document.createElement('div');
             // modal.classList.add('modal');
