@@ -23,13 +23,14 @@ return {
 
     addListItem: function(pokemon){
         let unorderedList = document.querySelector('.pokemon-list');
-        let listItem = document.createElement('li');
+        let listItem = document.createElement('div');
         let button = document.createElement('button');
         button.innerText = pokemon.name;
         button.classList.add('button');
         button.addEventListener('click', () => {
             pokemonRepository.showDetails(pokemon);
         });
+        listItem.classList.add('grid-item')
         listItem.appendChild(button);
         unorderedList.appendChild(listItem);
     },
