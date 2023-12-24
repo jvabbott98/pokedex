@@ -22,6 +22,7 @@ return {
         },
 
     addListItem: function(pokemon){
+
         let unorderedList = document.querySelector('.pokemon-list');
         let listItem = document.createElement('div');
         let button = document.createElement('button');
@@ -33,6 +34,17 @@ return {
         listItem.classList.add('grid-item')
         listItem.appendChild(button);
         unorderedList.appendChild(listItem);
+        pokemonRepository.loadDetails(pokemon).then(function() {          
+          if (pokemon.types[0].type.name === 'water') {
+            button.classList.add('water');
+          }
+          if (pokemon.types[0].type.name === 'grass') {
+            button.classList.add('grass');
+          }
+          if (pokemon.types[0].type.name === 'fire') {
+            button.classList.add('fire');
+          }
+      });
     },
 
     showDetails: function(pokemon) {
@@ -40,6 +52,7 @@ return {
         pokemonRepository.loadDetails(pokemon).then(function() {
             let dialogPromiseReject;
 
+            let typesArray = pokemon.types;
             //Clear modal-container and add modal element within
             modalContainer.innerText = '';                            
             let modal = document.createElement('div');
@@ -48,10 +61,21 @@ return {
             //Create content to be added to the Modal -> Pokemon name, height, and image as well as close button
             let pokemonName = document.createElement('h1');
             pokemonName.innerText = pokemon.name;
+
             let pokemonHeight = document.createElement('p');
             pokemonHeight.innerText = `Height: ${pokemon.height}`;
-            let pokemonImage = document.createElement('img')
+
+            let pokemonImage = document.createElement('img');
             pokemonImage.src = pokemon.imageUrl;
+
+            let pokemonType1 = document.createElement('p');
+            pokemonType1.innerText = pokemon.types[0].type.name;
+
+            let pokemonType2 = document.createElement('p');
+            if (typesArray.length === 2) {
+              pokemonType2.innerText = pokemon.types[1].type.name;
+            } 
+
             let closeButtonElement = document.createElement('button');  //Add button with text "close" that when clicked will hide modal
             closeButtonElement.classList.add('modal-close');
             closeButtonElement.innerText = 'Close';
@@ -59,8 +83,10 @@ return {
 
             //Add created content to modal through appendChild() and add modal to modal-container
             modal.appendChild(pokemonName);
-            modal.appendChild(pokemonHeight);
             modal.appendChild(pokemonImage);
+            modal.appendChild(pokemonHeight);
+            modal.appendChild(pokemonType1);
+            modal.appendChild(pokemonType2);
             modal.appendChild(closeButtonElement);
             modalContainer.appendChild(modal); 
 
@@ -118,9 +144,6 @@ return {
         });
       },
 
-      search: function() {
-        
-      }
 };
 })();
 
