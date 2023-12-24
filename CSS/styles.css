@@ -13,6 +13,7 @@ body {
     height: 50px;
     background-color: #333;
     position: fixed;
+    display: flex;
 }
 
 .logo {
@@ -28,6 +29,10 @@ body {
 .pokeball-img {
     height: 40px;
     width: auto;
+}
+
+#search-bar {
+
 }
 
 .pokemon-list {

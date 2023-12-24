@@ -116,16 +116,11 @@ return {
         }).catch(function (e) {
           console.error(e);
         });
+      },
+
+      search: function() {
+        
       }
-      
-
-
-
-
-
-
-
-
 };
 })();
 
@@ -134,5 +129,20 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.getAll().forEach(function(pokemon) {
         pokemonRepository.addListItem(pokemon);
     });
+});
+
+document.querySelector('#search-bar').addEventListener('input', function () {
+  let searchTerm = this.value.toLowerCase();
+  let filteredPokemonList = pokemonRepository.getAll().filter(function (pokemon) {
+      return pokemon.name.toLowerCase().includes(searchTerm);
+  });
+
+  // Clear existing list
+  document.querySelector('.pokemon-list').innerHTML = '';
+
+  // Display the filtered Pokémon list
+  filteredPokemonList.forEach(function (pokemon) {
+      pokemonRepository.addListItem(pokemon);
+  });
 });
 
