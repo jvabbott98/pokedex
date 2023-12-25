@@ -6,7 +6,7 @@
     --dragon-color: #f16e57;
     --electric-color: #eed535;
     --fairy-color: #fdb9e9;
-    --fighting-colo: #d56723;
+    --fighting-color: #d56723;
     --fire-color: #fd7d24;
     --flying-color: #3dc7ef;
     --ghost-color: #7b62a3; 
@@ -19,6 +19,7 @@
     --rock-color: #a38c21;
     --steel-color: #9eb7b8;
     --water-color: #4592c4;
+    --border-radius-size: 15px;
 
 }
 
@@ -74,11 +75,13 @@ body {
     width: 100%;
     height: 100%;
     border: 1px solid grey;
+    border-radius: 20px;
 }
 
+
+/* Set background color of items based on Pokemon's first type */
 .water {
     background-color: var(--water-color);
-    border-radius: 20px;
 }
 
 .grass {
@@ -88,6 +91,145 @@ body {
 .fire {
     background-color: var(--fire-color);
 }
+
+.bug {
+    background-color: var(--bug-color);
+}
+
+.dark {
+    background-color: var(--dark-color);
+}
+
+.dragon {
+    background-color: var(--dragon-color);
+}
+
+.electric {
+    background-color: var(--electric-color);
+}
+
+.fairy {
+    background-color: var(--fairy-color);
+}
+
+.fighting {
+    background-color: var(--fighting-color);
+}
+
+.flying {
+    background-color: var(--flying-color);
+}
+
+.ghost {
+    background-color: var(--ghost-color);
+}
+
+.ground {
+    background-color: var(--ground-color);
+}
+
+.ice {
+    background-color: var(--ice-color);
+}
+
+.normal {
+    background-color: var(--normal-color);
+}
+
+.poison {
+    background-color: var(--poison-color);
+}
+
+.psychic {
+    background-color: var(--psychic-color);
+}
+
+.rock {
+    background-color: var(--rock-color);
+}
+
+.steel {
+    backdrop-filter: var(--steel-color);
+}
+
+/* Set border color based on Pokemon's second type */
+.water2 {
+    border: var(--border-radius-size) solid var(--water-color);
+}
+
+.grass2 {
+    border: var(--border-radius-size) solid var(--grass-color);
+}
+
+.fire2 {
+    border: var(--border-radius-size) solid var(--fire-color);
+}
+
+.bug2 {
+    border: var(--border-radius-size) solid var(--bug-color);
+}
+
+.dark2 {
+    border: var(--border-radius-size) solid var(--dark-color);
+}
+
+.dragon2 {
+    border: var(--border-radius-size) solid var(--dragon-color);
+}
+
+.electric2 {
+    border: var(--border-radius-size) solid var(--electric-color);
+}
+
+.fairy2 {
+    border: var(--border-radius-size) solid var(--electric-color);
+}
+
+.fighting2 {
+    border: var(--border-radius-size) solid var(--fighting-color);
+}
+
+.flying2 {
+    border: var(--border-radius-size) solid var(--flying-color);
+}
+
+.ghost2 {
+    border: var(--border-radius-size) solid var(--ghost-color);
+}
+
+.ground2 {
+    border: var(--border-radius-size) solid var(--ground-color);
+}
+
+.ice2 {
+    border: var(--border-radius-size) solid var(--ice-color);
+}
+
+.normal2 {
+    border: var(--border-radius-size) solid var(--normal-color);
+}
+
+.poison2 {
+    border: var(--border-radius-size) solid var(--poison-color);
+}
+
+.psychic2 {
+    border: var(--border-radius-size) solid var(--psychic-color);
+}
+
+.rock2 {
+    border: var(--border-radius-size) solid var(--rock-color);
+}
+
+.steel2 {
+    border: var(--border-radius-size) solid var(--steel-color);
+}
+
+.no-type2 {
+    border: var(--border-radius-size) solid black;
+
+}
+
 
 .button:hover {
     background-color: aliceblue;

@@ -34,7 +34,9 @@ return {
         listItem.classList.add('grid-item')
         listItem.appendChild(button);
         unorderedList.appendChild(listItem);
-        pokemonRepository.loadDetails(pokemon).then(function() {          
+        pokemonRepository.loadDetails(pokemon).then(function() {     
+
+          // Add class based on pokemon's first type     
           if (pokemon.types[0].type.name === 'water') {
             button.classList.add('water');
           }
@@ -44,6 +46,97 @@ return {
           if (pokemon.types[0].type.name === 'fire') {
             button.classList.add('fire');
           }
+          if (pokemon.types[0].type.name === 'bug') {
+            button.classList.add('bug');
+          }
+          if (pokemon.types[0].type.name === 'dark') {
+            button.classList.add('dark');
+          }
+          if (pokemon.types[0].type.name === 'dragon') {
+            button.classList.add('dragon');
+          }
+          if (pokemon.types[0].type.name === 'electric') {
+            button.classList.add('electric');
+          }
+          if (pokemon.types[0].type.name === 'fairy') {
+            button.classList.add('fairy');
+          }
+          if (pokemon.types[0].type.name === 'fighting') {
+            button.classList.add('fighting');
+          }
+          if (pokemon.types[0].type.name === 'flying') {
+            button.classList.add('flying');
+          }
+          if (pokemon.types[0].type.name === 'ghost') {
+            button.classList.add('ghost');
+          }
+          if (pokemon.types[0].type.name === 'ground') {
+            button.classList.add('ground');
+          }
+          if (pokemon.types[0].type.name === 'ice') {
+            button.classList.add('ice');
+          }
+          if (pokemon.types[0].type.name === 'normal') {
+            button.classList.add('normal');
+          }
+          if (pokemon.types[0].type.name === 'poison') {
+            button.classList.add('poison');
+          }
+          if (pokemon.types[0].type.name === 'psychic') {
+            button.classList.add('psychic');
+          }
+          if (pokemon.types[0].type.name === 'rock') {
+            button.classList.add('rock');
+          }
+          if (pokemon.types[0].type.name === 'steel') {
+            button.classList.add('steel');
+          }
+          
+
+          //Add class based on pokemon's second type
+          if (pokemon.types[1].type.name === 'poison') {
+            button.classList.add('poison2');
+          }else if (pokemon.types[1].type.name === 'water') {
+            button.classList.add('water2');
+          }else if (pokemon.types[1].type.name === 'grass') {
+            button.classList.add('grass2');
+          }else if (pokemon.types[1].type.name === 'fire') {
+            button.classList.add('fire2');
+          }else if (pokemon.types[1].type.name === 'bug') {
+            button.classList.add('bug2');
+          }else if (pokemon.types[1].type.name === 'dark') {
+            button.classList.add('dark2');
+          }else if (pokemon.types[1].type.name === 'dragon') {
+            button.classList.add('dragon2');
+          }else if (pokemon.types[1].type.name === 'electric') {
+            button.classList.add('electric2');
+          }else if (pokemon.types[1].type.name === 'fairy') {
+            button.classList.add('fairy2');
+          }else if (pokemon.types[1].type.name === 'fighting') {
+            button.classList.add('fighting2');
+          }else if (pokemon.types[1].type.name === 'ghost') {
+            button.classList.add('ghost2');
+          }else if (pokemon.types[1].type.name === 'ground') {
+            button.classList.add('ground2');
+          }else if (pokemon.types[1].type.name === 'ice') {
+            button.classList.add('ice2');
+          }else if (pokemon.types[1].type.name === 'normal') {
+            button.classList.add('normal2');
+          }else if (pokemon.types[1].type.name === 'psychic') {
+            button.classList.add('psychic2');
+          }else if (pokemon.types[1].type.name === 'rock') {
+            button.classList.add('rock2');
+          }else if (pokemon.types[1].type.name === 'steel') {
+            button.classList.add('steel2');
+          }else if (pokemon.types[1].type.name === 'flying') {
+            button.classList.add('flying2');
+          }
+
+
+
+          
+
+          
       });
     },
 
