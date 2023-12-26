@@ -154,20 +154,30 @@ return {
             //Create content to be added to the Modal -> Pokemon name, height, and image as well as close button
             let pokemonName = document.createElement('h1');
             pokemonName.innerText = pokemon.name;
+            pokemonName.classList.add('header');
 
             let pokemonHeight = document.createElement('p');
             pokemonHeight.innerText = `Height: ${pokemon.height}`;
+            pokemonHeight.classList.add('height');
 
             let pokemonImage = document.createElement('img');
             pokemonImage.src = pokemon.imageUrl;
+            pokemonImage.classList.add('image');
 
             let pokemonType1 = document.createElement('p');
             pokemonType1.innerText = pokemon.types[0].type.name;
+            pokemonType1.classList.add('type1')
 
             let pokemonType2 = document.createElement('p');
             if (typesArray.length === 2) {
               pokemonType2.innerText = pokemon.types[1].type.name;
+              pokemonType2.classList.add('type2')
             } 
+
+            let pokemonTypes = document.createElement('div')
+            pokemonTypes.classList.add('types');
+            pokemonTypes.appendChild(pokemonType1);
+            pokemonTypes.appendChild(pokemonType2);
 
             let closeButtonElement = document.createElement('button');  //Add button with text "close" that when clicked will hide modal
             closeButtonElement.classList.add('modal-close');
@@ -178,8 +188,7 @@ return {
             modal.appendChild(pokemonName);
             modal.appendChild(pokemonImage);
             modal.appendChild(pokemonHeight);
-            modal.appendChild(pokemonType1);
-            modal.appendChild(pokemonType2);
+            modal.appendChild(pokemonTypes);
             modal.appendChild(closeButtonElement);
             modalContainer.appendChild(modal); 
 
