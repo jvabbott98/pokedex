@@ -1,6 +1,6 @@
 let pokemonRepository = (function () {
 let pokemonList = [];
-let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
 let modalContainer = document.querySelector('#modal-container');
 
 //returns all objects in the pokemonList array.
@@ -9,7 +9,7 @@ return {
         return pokemonList;
     },
 
-// Adds a pokemon objec to the pokemonList array.
+// Adds a pokemon object to the pokemonList array.
     add: function(pokemon) {
           if (
             typeof pokemon === "object" &&
